@@ -1,14 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Lab_3_4.Data;
 using Lab_3_4.Models;
+using Lab_3_4.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        // Решение ошибки: "A possible object cycle was detected"
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
         options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
     });
@@ -17,17 +17,19 @@ builder.Services.AddControllers()
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 21)) // Укажите свою версию MySQL
+        new MySqlServerVersion("8.0.43") // Ваша версия
     )
 );
 
-// Learn more about configuring Swagger at https://aka.ms/aspnetcore/swashbuckle
+// Регистрация RabbitMQ сервиса
+builder.Services.AddSingleton<IRabbitMqService, RabbitMqService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

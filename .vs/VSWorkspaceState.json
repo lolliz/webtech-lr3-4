@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Lab_3_4",
+    "\\Lab_3_4\\Controllers",
+    "\\Lab_3_4\\Events",
+    "\\Lab_3_4\\Services"
   ],
-  "SelectedNode": "\\Lab_3_4.sln",
+  "SelectedNode": "\\Lab_3_4\\Services\\RabbitMqService.cs",
   "PreviewInSolutionExplorer": false
 }

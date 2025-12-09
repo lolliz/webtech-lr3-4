@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ty5FcaIIbxDvzHvnRuJ1NbBW+wFkCHTgXE3Upgu2voE4B4nCzpbXN+jR18NOoVVyRlzG4igHPvhFgM2p7/CijQ==",
+  "dgSpecHash": "sy2jTO21lfvSd7MOJLFJlV8ILCtErBlczbnUJqYO2mFeCu9Y9hjjuFi+Y3NYBj8incpNuqy48T789jJePWUAfQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\Desktop\\универ и рабочие моментики\\веб технологии\\Web_technology-main\\Web_technology-lab\\Lab_3_4\\Lab_3_4\\Lab_3_4.csproj",
   "expectedPackageFiles": [
@@ -21,11 +21,14 @@
     "C:\\Users\\User\\.nuget\\packages\\microsoft.openapi\\1.6.25\\microsoft.openapi.1.6.25.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mysqlconnector\\2.4.0\\mysqlconnector.2.4.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\9.0.0\\pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\rabbitmq.client\\6.4.0\\rabbitmq.client.6.4.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\swashbuckle.aspnetcore\\9.0.6\\swashbuckle.aspnetcore.9.0.6.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.6\\swashbuckle.aspnetcore.swagger.9.0.6.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\9.0.6\\swashbuckle.aspnetcore.swaggergen.9.0.6.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\9.0.6\\swashbuckle.aspnetcore.swaggerui.9.0.6.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.0\\system.diagnostics.diagnosticsource.9.0.0.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.0\\system.diagnostics.diagnosticsource.9.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }

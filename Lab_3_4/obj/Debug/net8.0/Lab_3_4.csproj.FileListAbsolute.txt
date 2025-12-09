@@ -28,6 +28,7 @@ C:\Users\User\Desktop\универ и рабочие моментики\веб �
 C:\Users\User\Desktop\универ и рабочие моментики\веб технологии\Web_technology-main\Web_technology-lab\Lab_3_4\Lab_3_4\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\User\Desktop\универ и рабочие моментики\веб технологии\Web_technology-main\Web_technology-lab\Lab_3_4\Lab_3_4\bin\Debug\net8.0\MySqlConnector.dll
 C:\Users\User\Desktop\универ и рабочие моментики\веб технологии\Web_technology-main\Web_technology-lab\Lab_3_4\Lab_3_4\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\User\Desktop\универ и рабочие моментики\веб технологии\Web_technology-main\Web_technology-lab\Lab_3_4\Lab_3_4\bin\Debug\net8.0\RabbitMQ.Client.dll
 C:\Users\User\Desktop\универ и рабочие моментики\веб технологии\Web_technology-main\Web_technology-lab\Lab_3_4\Lab_3_4\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\User\Desktop\универ и рабочие моментики\веб технологии\Web_technology-main\Web_technology-lab\Lab_3_4\Lab_3_4\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\User\Desktop\универ и рабочие моментики\веб технологии\Web_technology-main\Web_technology-lab\Lab_3_4\Lab_3_4\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Lab_3_4.Data;
 using Lab_3_4.Models;
+using Lab_3_4.Events;
+using Lab_3_4.Services;
 
 namespace Lab_3_4.Controllers
 {
@@ -10,10 +12,12 @@ namespace Lab_3_4.Controllers
     public class CarsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IRabbitMqService _rabbitMqService;
 
-        public CarsController(AppDbContext context)
+        public CarsController(AppDbContext context, IRabbitMqService rabbitMqService)
         {
             _context = context;
+            _rabbitMqService = rabbitMqService;
         }
 
         // GET: api/cars
@@ -38,12 +42,27 @@ namespace Lab_3_4.Controllers
         [HttpPost]
         public async Task<ActionResult<Car>> PostCar(Car car)
         {
-            if (!await DealerExists(car.DealerID))
-            {
-                return BadRequest("Дилер не найден.");
-            }
+            if (!await DealerExists(car.DealerID)) return BadRequest("Дилер не найден.");
+
             _context.Cars.Add(car);
             await _context.SaveChangesAsync();
+
+            // Отправляем событие CREATE
+            var carEvent = new CarEvent
+            {
+                EventType = "CREATE",
+                Car = new CarData
+                {
+                    Firm = car.Firm,
+                    Model = car.Model,
+                    Year = car.Year,
+                    Power = car.Power,
+                    Color = car.Color,
+                    Price = car.Price
+                }
+            };
+            _rabbitMqService.Publish(carEvent);
+
             return CreatedAtAction(nameof(GetCar), new { id = car.ID }, car);
         }
 
@@ -51,15 +70,8 @@ namespace Lab_3_4.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCar(int id, Car car)
         {
-            if (id != car.ID)
-            {
-                return BadRequest();
-            }
-
-            if (!await DealerExists(car.DealerID))
-            {
-                return BadRequest("Дилер не найден.");
-            }
+            if (id != car.ID) return BadRequest();
+            if (!await DealerExists(car.DealerID)) return BadRequest("Дилер не найден.");
 
             _context.Entry(car).State = EntityState.Modified;
 
@@ -70,14 +82,26 @@ namespace Lab_3_4.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!await CarExists(id))
-                {
                     return NotFound();
-                }
                 else
-                {
-                    throw; // Если запись была изменена другим процессом, но существует — пробросить исключение
-                }
+                    throw;
             }
+
+            // Отправляем событие UPDATE
+            var carEvent = new CarEvent
+            {
+                EventType = "UPDATE",
+                Car = new CarData
+                {
+                    Firm = car.Firm,
+                    Model = car.Model,
+                    Year = car.Year,
+                    Power = car.Power,
+                    Color = car.Color,
+                    Price = car.Price
+                }
+            };
+            _rabbitMqService.Publish(carEvent);
 
             return NoContent();
         }
@@ -87,24 +111,37 @@ namespace Lab_3_4.Controllers
         public async Task<IActionResult> DeleteCar(int id)
         {
             var car = await _context.Cars.FindAsync(id);
-            if (car == null)
+            if (car == null) return NotFound();
+
+            // Сохраняем данные перед удалением
+            var carEvent = new CarEvent
             {
-                return NotFound();
-            }
+                EventType = "DELETE",
+                Car = new CarData
+                {
+                    Firm = car.Firm,
+                    Model = car.Model,
+                    Year = car.Year,
+                    Power = car.Power,
+                    Color = car.Color,
+                    Price = car.Price
+                }
+            };
 
             _context.Cars.Remove(car);
             await _context.SaveChangesAsync();
 
+            // Отправляем событие DELETE
+            _rabbitMqService.Publish(carEvent);
+
             return NoContent();
         }
 
-        // Асинхронная проверка существования автомобиля
         private async Task<bool> CarExists(int id)
         {
             return await _context.Cars.AnyAsync(e => e.ID == id);
         }
 
-        // Асинхронная проверка существования дилера
         private async Task<bool> DealerExists(int id)
         {
             return await _context.Dealers.AnyAsync(e => e.ID == id);
