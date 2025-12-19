@@ -4,8 +4,9 @@
     "\\Lab_3_4",
     "\\Lab_3_4\\Controllers",
     "\\Lab_3_4\\Events",
-    "\\Lab_3_4\\Services"
+    "\\Lab_3_4\\Services",
+    "\\Lab_3_4\\wwwroot"
   ],
-  "SelectedNode": "\\Lab_3_4\\Services\\RabbitMqService.cs",
+  "SelectedNode": "\\Lab_3_4\\wwwroot\\index.html",
   "PreviewInSolutionExplorer": false
 }

@@ -1098,11 +1098,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\универ и рабочие моментики\\веб технологии\\Web_technology-main\\Web_technology-lab\\Lab_3_4\\Lab_3_4\\Lab_3_4.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Lab_6\\Lab_3_4\\Lab_3_4.csproj",
       "projectName": "Lab_3_4",
-      "projectPath": "C:\\Users\\User\\Desktop\\универ и рабочие моментики\\веб технологии\\Web_technology-main\\Web_technology-lab\\Lab_3_4\\Lab_3_4\\Lab_3_4.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Lab_6\\Lab_3_4\\Lab_3_4.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\универ и рабочие моментики\\веб технологии\\Web_technology-main\\Web_technology-lab\\Lab_3_4\\Lab_3_4\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Lab_6\\Lab_3_4\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

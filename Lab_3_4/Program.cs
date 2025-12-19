@@ -1,11 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Lab_3_4.Data;
 using Lab_3_4.Models;
-using Lab_3_4.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+// Add services to the container.
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -17,19 +16,28 @@ builder.Services.AddControllers()
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion("8.0.43") // Ваша версия
+        new MySqlServerVersion(new Version(8, 0, 21))
     )
 );
 
-// Регистрация RabbitMQ сервиса
-builder.Services.AddSingleton<IRabbitMqService, RabbitMqService>();
+// === CORS: разрешить запросы от React (порт 3000) ===
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReact", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -37,6 +45,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// === CORS middleware: ДОБАВИТЬ ДО UseAuthorization ===
+app.UseCors("AllowReact");
 
 app.UseAuthorization();
 
